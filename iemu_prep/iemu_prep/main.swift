@@ -316,9 +316,9 @@ _ = shell(shellCommandTemp)
 
 print("[+] Cleaning mount points before we continue...")
 shellCommandTemp = "hdiutil detach /Volumes/" + image_name
-_ = shell(shellCommandTemp)
+print(shell(shellCommandTemp))
 shellCommandTemp = "hdiutil detach /Volumes/" + fs_image_name
-_ = shell(shellCommandTemp)
+print(shell(shellCommandTemp))
 
 print("[+] Time to have our files ready.")
 for out in (try FileManager.default.contentsOfDirectory(atPath: tempFile)) where out.hasSuffix(".fout") {
@@ -326,6 +326,12 @@ for out in (try FileManager.default.contentsOfDirectory(atPath: tempFile)) where
     shellCommandTemp = cdFirst + "cp -r " + out + " " + targertFile + "/"
     _ = shell(shellCommandTemp)
 }
+
+print("[+] Fixing files permission...")
+shellCommandTemp = "chmod -R 777 " + targertFile
+_ = shell(shellCommandTemp)
+shellCommandTemp = "chmod -R 777 " + targertFile + "/*" 
+_ = shell(shellCommandTemp)
 
 print("[+] Removing temp files...")
 shellCommandTemp = "rm -rf " + tempFile

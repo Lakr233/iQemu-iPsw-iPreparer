@@ -73,6 +73,10 @@
          </CommandLineArgument>
          <CommandLineArgument
             argument = "/Users/ouo/Desktop/iemu/img/iiiP"
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "/Users/ouo/Desktop/iiiqt"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
